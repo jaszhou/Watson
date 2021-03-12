@@ -648,7 +648,7 @@ public class ListManagementRoute extends BlogController {
 
 						String c = request.queryParams(key);
 
-						// System.out.println(checkid + ": " + c + " " + u);
+						System.out.println("checkid :"+ c );
 
 						// BasicDBObject regexQuery = new BasicDBObject();
 						// regexQuery.put(field, new BasicDBObject("$regex",
@@ -657,8 +657,14 @@ public class ListManagementRoute extends BlogController {
 						if (c != null && c != "") {
 
 							if (c.trim().length() > 0)
+								
+								c = Util.cleanTextContent(c);
+							
+								if(c.length()>0){
 
 								field.append(key, new Document("$regex", c).append("$options", "i"));
+								System.out.println("field: " + field.toJson());
+								}
 						}
 					}
 
