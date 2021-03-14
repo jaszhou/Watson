@@ -9,7 +9,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/plmlist">WCTS</a>
+			<a class="navbar-brand" href="/plmlist">WCTS </a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
@@ -35,13 +35,22 @@
 					<ul class="dropdown-menu   bullet">
 						<li><a href="/userlist">User List</a></li>
 					</ul></li>
+				
+					<li id="build" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"><span
+						class="glyphicon glyphicon-edit"></span> build#${build_id} <span class="caret"></span></a>
+					<ul class="dropdown-menu   bullet">
+						<li><a href="/userlist">User List</a></li>
+					</ul></li>
+						
+				
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" id="login"><i class="fa fa-user">
-							User </i> <span class="caret"></span> </a>
+							User </i> <span class="caret"></span>  </a>
 					<ul class="dropdown-menu   bullet">
 						<li><a href="/edituser"><i class="fa fa-fw fa-user"></i> Profile</a>
 						</li>

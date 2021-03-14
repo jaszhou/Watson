@@ -49,6 +49,8 @@ public class ListManagementRoute extends BlogController {
 	}
 
 	void initializeRoutes() throws IOException {
+		
+		System.out.println("Current build: "+build_id);
 
 		get("/newplm", new FreemarkerBasedRoute("newplm.ftl") {
 			@Override
@@ -84,6 +86,8 @@ public class ListManagementRoute extends BlogController {
 				root.put("username", username);
 				List<String> roles = sessionDAO.findUserRoleBySessionId(getSessionCookie(request));
 				root.put("roles", roles);
+				
+				root.put("build_id", build_id);
 
 				template.process(root, writer);
 

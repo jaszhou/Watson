@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -80,10 +81,15 @@ public class BlogController {
 	static PEDAO PEDAO;
 	static MongoDatabase clientDatabase;
 	static String mongoURL = "mongodb://192.168.56.101";
+	static String build_id = "";
 
 	public static void main(String[] args) throws IOException {
 		// usage: main <port> <db>
 
+		// manually set build number
+		
+		build_id = new SimpleDateFormat("yyyyMMdd").format(new Date());;
+		
 		Util ut = new Util();
 		String port = ut.getPropValues("port");
 		mongoURL = ut.getPropValues("mongoURL");

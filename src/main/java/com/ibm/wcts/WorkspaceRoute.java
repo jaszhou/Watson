@@ -652,9 +652,13 @@ public class WorkspaceRoute extends BlogController {
 
 							String c = request.queryParams(key);
 
-							// System.out.println(key + ": " + c );
+							
 
 							if (c != null && c != "") {
+								
+								c = Util.cleanTextContent(c);
+								
+								 System.out.println(key + ": " +  c);
 
 								field.append("input." + key, new Document("$regex", c).append("$options", "i"));
 							}
