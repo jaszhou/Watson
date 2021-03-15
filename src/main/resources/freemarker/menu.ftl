@@ -38,7 +38,7 @@
 				
 					<li id="build" class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"><span
-						class="glyphicon glyphicon-edit"></span> build#${build_id} <span class="caret"></span></a>
+						class="glyphicon glyphicon-edit"></span>build#<#if build_id?? > ${build_id} </#if><span class="caret"></span></a>
 					<ul class="dropdown-menu   bullet">
 						<li><a href="/userlist">User List</a></li>
 					</ul></li>
