@@ -15,7 +15,7 @@ public class Util {
 	public static void main(String[] args){
 		System.out.println(System.getProperty("file.encoding"));
 		
-		String text = "http://google.com";
+		String text = "https://message-hub-jenkins.swg-devops.com/job/ops/job/ops-worker-reload-prod/";
 		System.out.println(transformURLIntoLinks(text));
 	}
 
@@ -25,7 +25,7 @@ public class Util {
 	}
 	
 	public static String transformURLIntoLinks(String text){
-		String urlValidationRegex = "(https?|ftp)://(www\\d?|[a-zA-Z0-9]+)?.[a-zA-Z0-9-]+(\\:|.)([a-zA-Z0-9.]+|(\\d+)?)([/?:].*)?";
+		String urlValidationRegex = "(https?|ftp)://(www\\d?|[a-zA-Z0-9]+)?.[a-zA-Z0-9-]+(\\:|.)([a-zA-Z0-9-.]+|(\\d+)?)([/?:].*)?";
 		Pattern p = Pattern.compile(urlValidationRegex);
 		Matcher m = p.matcher(text);
 		StringBuffer sb = new StringBuffer();
