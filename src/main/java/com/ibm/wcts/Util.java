@@ -25,7 +25,17 @@ public class Util {
 	}
 	
 	public static String transformURLIntoLinks(String text){
-		String urlValidationRegex = "(https?|ftp)://(www\\d?|[a-zA-Z0-9]+)?.[a-zA-Z0-9-]+(\\:|.)([a-zA-Z0-9-.]+|(\\d+)?)([/?:].*)?";
+		
+		String tag = "href";
+		
+		
+		String urlValidationRegex = "(https?|ftp)://(www\\d?|[a-zA-Z0-9]+)?.[a-zA-Z0-9-]+(\\:|.)([a-zA-Z0-9-_=&+.]+|(\\d+)?)([/?:].*)?";
+		
+		if(text.contains(tag)){
+			// already encoded
+			
+			return text;
+		}
 		Pattern p = Pattern.compile(urlValidationRegex);
 		Matcher m = p.matcher(text);
 		StringBuffer sb = new StringBuffer();
@@ -45,7 +55,9 @@ public class Util {
             
             return matcher.matches();
         } catch (RuntimeException e) {
-        return false;
+        	System.out.println("Doesn't match");
+        	e.printStackTrace();
+        	return false;
         }       
 	}
         

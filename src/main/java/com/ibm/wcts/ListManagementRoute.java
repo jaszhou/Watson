@@ -261,12 +261,11 @@ public class ListManagementRoute extends BlogController {
 						String c = request.queryParams(key).trim();
 						
 						// try to enable clickable link
-						if(!Util.IsMatch(c, "<a")){
-							// enable
-							c = Util.transformURLIntoLinks(c);
-							
-							System.out.println(c);
-						}
+					
+						
+						c = Util.transformURLIntoLinks(c);
+						
+						System.out.println(c);
 
 						newDoc.append(key, c);
 						}
