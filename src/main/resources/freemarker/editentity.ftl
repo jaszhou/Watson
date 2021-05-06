@@ -86,7 +86,7 @@
 				value="${listdoc._id}"></input>
 
 			<button type="submit" class="btn btn-default">Save</button>
-			<a href="/list?name=${listname}" class="btn btn-default">Back</a>
+			<a href="/list?name=${listname}" class="btn btn-default">Back to List</a>
 			
 			  <a href="/editentity?_id=${listdoc._id}&listname=${listname}"
 						class="btn btn-default">Edit</a> 

@@ -113,7 +113,7 @@ public class ListManagementRoute extends BlogController {
 				
 				Document d = alist.find().first();
 
-				Document search = new Document("Name", entityName);
+//				Document search = new Document("Name", entityName);
 
 				// List<Document> recs =
 				// PLMDAO.searchPLMList(listname,search,100);
@@ -752,6 +752,8 @@ public class ListManagementRoute extends BlogController {
 				
 
 				template.process(root, writer);
+				
+//				response.redirect("/searchaction/list?name=" + listname);
 
 			}
 		});
@@ -765,10 +767,9 @@ public class ListManagementRoute extends BlogController {
 				String page = request.queryParams("page");
 				String filter = request.queryParams("filter");
 
-				System.out.println("listname: " + listname);
-				System.out.println("filter: " + filter);
-
 				MongoCollection<Document> alist = clientDatabase.getCollection(listname);
+
+				System.out.println("listname: " + listname);
 
 				Document field = new Document();
 
@@ -785,7 +786,7 @@ public class ListManagementRoute extends BlogController {
 
 						String c = request.queryParams(key);
 
-						// System.out.println(checkid + ": " + c + " " + u);
+						System.out.println("checkid :"+ c );
 
 						// BasicDBObject regexQuery = new BasicDBObject();
 						// regexQuery.put(field, new BasicDBObject("$regex",
@@ -793,11 +794,15 @@ public class ListManagementRoute extends BlogController {
 
 						if (c != null && c != "") {
 
-							// Document regexQuery = new Document();
-							// regexQuery.put(key, new
-							// Document("$regex",c).append("$options", "i"));
+							if (c.trim().length() > 0)
+								
+								c = Util.cleanTextContent(c);
+							
+								if(c.length()>0){
 
-							field.append(key, new Document("$regex", c).append("$options", "i"));
+								field.append(key, new Document("$regex", c).append("$options", "i"));
+								System.out.println("field: " + field.toJson());
+								}
 						}
 					}
 
@@ -813,7 +818,7 @@ public class ListManagementRoute extends BlogController {
 
 				System.out.println("search: " + field.toJson());
 
-				List<Document> recs = alist.find(field).into(new ArrayList<Document>());
+				List<Document> recs = alist.find(field).sort(new Document("_id",-1)).into(new ArrayList<Document>());
 
 				SimpleHash root = new SimpleHash();
 
@@ -864,18 +869,17 @@ public class ListManagementRoute extends BlogController {
 
 				// root.put("listid", listid);
 				root.put("listname", listname);
-				
-				long count = clientDatabase.getCollection(listname).count();
-				
 				String username = sessionDAO.findUserNameBySessionId(getSessionCookie(request));
 				root.put("username", username);
-
 				List<String> roles = sessionDAO.findUserRoleBySessionId(getSessionCookie(request));
 				root.put("roles", roles);
-				root.put("count",String.valueOf(count));
+				root.put("filter", filter);
+				root.put("count",totalrec);
 				
 
 				template.process(root, writer);
+				
+//				response.redirect("/searchaction/list?name=" + listname);
 
 			}
 		});

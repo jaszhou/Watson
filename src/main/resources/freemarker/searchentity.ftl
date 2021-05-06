@@ -21,7 +21,7 @@
 
 
 
-			<form method="post" action="/searchaction" style="margin-top: 30px;">
+			<form method="get" action="/searchaction" style="margin-top: 30px;">
 
 
 				<div class="form-group"><@listProperties listdoc /></div>
