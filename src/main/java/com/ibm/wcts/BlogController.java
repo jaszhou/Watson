@@ -89,7 +89,7 @@ public class BlogController {
 		// manually set build number
 		
 		//build_id = new SimpleDateFormat("yyyyMMdd").format(new Date());;
-		build_id = "20210513";
+		build_id = "20210520";
 		
 		Util ut = new Util();
 		String port = ut.getPropValues("port");

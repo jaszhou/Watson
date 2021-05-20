@@ -19,7 +19,7 @@
 		
 		
      
-     <td><a href="/download?file=${rec['file']}&filename=${mylist[3]}">${mylist[3]}</a></td>
+     <td><a href="/download?file=${rec['file']}&filename=<#if rec["filename"]?? >${rec["filename"]}</#if>"><#if rec["filename"]?? >${rec["filename"]}</#if></a></td>
      <td><#if rec["desc"]?? >${rec["desc"]}</#if></td>
      <td><#if rec["creator"]?? >${rec["creator"]}</#if></td>
      <td><#if rec["lastUpdate"]?? >${rec["lastUpdate"]?datetime}</#if></td>

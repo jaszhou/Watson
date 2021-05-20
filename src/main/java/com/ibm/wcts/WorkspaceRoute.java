@@ -127,11 +127,22 @@ public class WorkspaceRoute extends BlogController {
 
 					System.out.println(fileName);
 
-					String filePath = "/uploads";
+					String filePath = "uploads";
 
 					Path path = Paths.get(filePath);
 
 					String dir = path.toFile().getAbsolutePath();
+					
+					System.out.println("dir "+dir);
+					
+					// check if upload folder exists					
+				    File directory = new File(dir);
+				    if (! directory.exists()){
+				        directory.mkdir();
+				        // If you require it to make the entire directory path including parents,
+				        // use directory.mkdirs(); here instead.
+				    }
+				    
 
 					File matchdir = new File(dir + File.separator + entityid );
 					
@@ -154,10 +165,10 @@ public class WorkspaceRoute extends BlogController {
 					Files.copy(in, path, StandardCopyOption.REPLACE_EXISTING);
 					in.close();
 
-					// System.out.println(path.getFileSystem());
+					 System.out.println(path.getFileSystem());
 
 					Document attach = new Document("desc", description);
-					attach.append("file", newfile).append("creator", username).append("lastUpdate", new Date());
+					attach.append("file", newfile).append("filename",fileName).append("creator", username).append("lastUpdate", new Date());
 
 //					int mid = Integer.valueOf(entityid).intValue();
 
