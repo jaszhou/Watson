@@ -63,7 +63,8 @@ public class WorkspaceRoute extends BlogController {
 
 				
 				String upload_dir =ut.getPropValues("upload_dir");
-
+				System.out.println("upload dir: "+ upload_dir);
+				
 				MultipartConfigElement multipartConfigElement = new MultipartConfigElement(upload_dir);
 				
 				request.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);

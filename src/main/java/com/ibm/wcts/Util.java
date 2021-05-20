@@ -90,7 +90,7 @@ public class Util {
 
 		try {
 			Properties prop = new Properties();
-			String propFileName = "config.properties";
+			String propFileName = "config.properties"; // using src/main/resources/config.properties
 
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
