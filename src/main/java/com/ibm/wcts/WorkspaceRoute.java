@@ -127,8 +127,10 @@ public class WorkspaceRoute extends BlogController {
 
 					System.out.println(fileName);
 
-					String filePath = "uploads";
+					//String filePath = "uploads";
 
+					String filePath = ut.getPropValues("upload_dir");
+					
 					Path path = Paths.get(filePath);
 
 //					String dir = path.toFile().getAbsolutePath();
